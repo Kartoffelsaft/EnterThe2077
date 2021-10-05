@@ -40,3 +40,10 @@ func _on_ClickDetector_input_event(
 ):
     if event.is_action_pressed("player_shoot"):
         shoot_at(click_position)
+    
+    $PlayerVisual.look_at_from_position(
+        translation, 
+        click_position,
+        Vector3.UP
+    )
+    $PlayerVisual.transform = $PlayerVisual.transform.rotated(Vector3(0, 1, 0), -1.5) 

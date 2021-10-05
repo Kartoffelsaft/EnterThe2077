@@ -23,11 +23,11 @@ script = ExtResource( 2 )
 transform = Transform( 1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0 )
 shape = SubResource( 1 )
 
-[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="PlayerVisual" type="AnimatedSprite3D" parent="."]
 offset = Vector2( -100, 0 )
 pixel_size = 0.008
-billboard = 2
-alpha_cut = 1
+shaded = true
+alpha_cut = 2
 frames = SubResource( 2 )
 
 [node name="Camera" type="Camera" parent="."]
