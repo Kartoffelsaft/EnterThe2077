@@ -3,6 +3,8 @@ extends KinematicBody
 
 export var speed: float = 0.5
 
+const SCN_BULLET = preload("res://scenes/bullet.tscn")
+
 func _ready():
     pass 
 
@@ -23,7 +25,11 @@ func _process(_delta):
 
 
 func shoot_at(target: Vector3):
-    print("shoot at: ", target)
+    var nBullet = SCN_BULLET.instance()
+    nBullet.look_at_from_position(translation, target, Vector3.UP)
+
+    get_parent().add_child(nBullet)
+    
 
 func _on_ClickDetector_input_event(
     _camera, 
