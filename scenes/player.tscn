@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/icons/proto.png" type="Texture" id=1]
 [ext_resource path="res://src/player/player.gd" type="Script" id=2]
 [ext_resource path="res://scenes/clickDetector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/player/camera.gd" type="Script" id=4]
 
 [sub_resource type="CapsuleShape" id=1]
 
@@ -31,7 +32,10 @@ shaded = true
 alpha_cut = 2
 frames = SubResource( 2 )
 
-[node name="Camera" type="Camera" parent="."]
+[node name="Camera" type="Camera" parent="." groups=[
+"shakeable",
+]]
 transform = Transform( 1, 0, 0, 0, 0.847854, 0.53023, 0, -0.53023, 0.847854, 0, 7.02317, 10.6058 )
+script = ExtResource( 4 )
 
 [connection signal="input_event" from="ClickDetector" to="." method="_on_ClickDetector_input_event"]

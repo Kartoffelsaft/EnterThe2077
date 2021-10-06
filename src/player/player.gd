@@ -1,6 +1,5 @@
 extends KinematicBody
 
-
 export var speed: float = 20
 export var gravity: float = 5
 
@@ -28,6 +27,9 @@ func _process(delta):
         fallingSpeed += gravity * delta
 
     if velocity.length_squared() > 0.1 || fallingSpeed > 0:
+        velocity = $Camera.transform.basis.xform(velocity)
+        velocity.y = 0
+    
         velocity = velocity.normalized() * speed
         velocity.y = -fallingSpeed
         var _coll = move_and_slide(velocity, Vector3.UP)
@@ -38,6 +40,8 @@ func shoot_at(target: Vector3):
     nBullet.look_at_from_position(translation, target, Vector3.UP)
 
     get_parent().add_child(nBullet)
+
+    get_tree().call_group("shakeable", "shake")
     
 
 func _on_ClickDetector_input_event(
