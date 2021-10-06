@@ -15,6 +15,7 @@ animations = [ {
 } ]
 
 [node name="PlayerHull" type="KinematicBody"]
+collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="ClickDetector" parent="." instance=ExtResource( 3 )]

@@ -14,6 +14,11 @@ config/name="EnterThe2077"
 run/main_scene="res://scenes/Main.tscn"
 config/icon="res://assets/sprites/icons/proto.png"
 
+[display]
+
+window/size/width=1600
+window/size/height=900
+
 [input]
 
 player_left={

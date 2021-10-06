@@ -1,14 +1,17 @@
 extends KinematicBody
 
 
-export var speed: float = 0.5
+export var speed: float = 20
+export var gravity: float = 5
+
+var fallingSpeed: float = 0
 
 const SCN_BULLET = preload("res://scenes/bullet.tscn")
 
 func _ready():
     pass 
 
-func _process(_delta):
+func _process(delta):
     var velocity = Vector3()
     if Input.is_action_pressed("player_left"):
         velocity.x -= 1
@@ -18,10 +21,16 @@ func _process(_delta):
         velocity.z -= 1
     if Input.is_action_pressed("player_down"):
         velocity.z += 1
+    
+    if is_on_floor():
+        fallingSpeed = 0
+    else:
+        fallingSpeed += gravity * delta
 
-    if velocity.length_squared() > 0.1:
+    if velocity.length_squared() > 0.1 || fallingSpeed > 0:
         velocity = velocity.normalized() * speed
-        var _coll = move_and_collide(velocity)
+        velocity.y = -fallingSpeed
+        var _coll = move_and_slide(velocity, Vector3.UP)
 
 
 func shoot_at(target: Vector3):
