@@ -35,7 +35,7 @@ frames = SubResource( 2 )
 [node name="Camera" type="Camera" parent="." groups=[
 "shakeable",
 ]]
-transform = Transform( 1, 0, 0, 0, 0.847854, 0.53023, 0, -0.53023, 0.847854, 0, 7.02317, 10.6058 )
+transform = Transform( 1, 0, 0, 0, 0.452513, 0.891758, 0, -0.891758, 0.452513, 0, 13.3375, 6.8624 )
 script = ExtResource( 4 )
 
 [connection signal="input_event" from="ClickDetector" to="." method="_on_ClickDetector_input_event"]
